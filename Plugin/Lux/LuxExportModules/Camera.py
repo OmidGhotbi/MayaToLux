@@ -173,3 +173,12 @@ class Camera(ExportModule):
         pointM = self.checkUpAxis(pointM)
         pointTM = OpenMaya.MTransformationMatrix(pointM)
         return pointTM.getTranslation(OpenMaya.MSpace.kWorld)
+        
+    def InsertEnvironment(self):
+        """
+        Insert parameters specific to the lux "environment" camera type into the
+        scene file.
+        """
+        self.addToOutput( '\tscene.camera.type = environment' )
+        self.InsertCommon()
+        #self.addToOutput( '' )
