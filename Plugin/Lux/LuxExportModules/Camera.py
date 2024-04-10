@@ -25,3 +25,5 @@
 import math
 from maya import OpenMaya
 from maya import cmds
+
+from ExportModule import ExportModule
