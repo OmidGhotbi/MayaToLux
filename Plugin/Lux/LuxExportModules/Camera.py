@@ -71,3 +71,5 @@ class Camera(ExportModule):
                 self.InsertEnvironment()
             else:
                 self.InsertRealistic()
+                
+        self.InsertLookat()
