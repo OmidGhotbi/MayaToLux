@@ -196,3 +196,10 @@ class Camera(ExportModule):
              cFOV = math.degrees( self.camera.horizontalFieldOfView() )
         else:
             cFOV = math.degrees( self.camera.verticalFieldOfView() ) 
+        
+        filmdiag = math.sqrt( self.camera.horizontalFilmAperture() * self.camera.verticalFilmAperture() )
+        fstop = self.camera.fStop()
+        dofdist = self.camera.centerOfInterest()
+        focal = self.camera.focalLength() / self.DOF_CONST
+        aperture_diameter = focal / fstop
+        filmdistance = dofdist * focal / (dofdist - focal)
