@@ -182,3 +182,12 @@ class Camera(ExportModule):
         self.addToOutput( '\tscene.camera.type = environment' )
         self.InsertCommon()
         #self.addToOutput( '' )
+        
+    def InsertRealistic(self):
+        """
+        Insert parameters specific to the lux "realistic" camera type into the
+        scene file.
+        
+        TODO: Complete this. Realistic doesn't work so I don't know if this is correct.
+        TODO: include self.sceneScale where necessary
+        """
