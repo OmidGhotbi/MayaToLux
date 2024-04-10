@@ -95,3 +95,15 @@ class Camera(ExportModule):
     
         shiftX = self.camera.filmTranslateH() # these are a fraction of the image height/width
         shiftY = self.camera.filmTranslateV()
+        
+        # Film aspect ratio is > 1 for landscape formats, ie 16/9 > 1
+        ratio = float(self.outWidth) / float(self.outHeight)
+        invRatio = 1/ratio
+        
+        if ratio > 1.0:
+            screenwindow = [ ( (2 * shiftX) - 1 ) * self.scale,
+                             ( (2 * shiftX) + 1 ) * self.scale,
+                             ( (2 * shiftY) - invRatio ) * self.scale,
+                             ( (2 * shiftY) + invRatio ) * self.scale
+                           ]
+        else:
