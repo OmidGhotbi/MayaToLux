@@ -112,3 +112,15 @@ class Camera(ExportModule):
                              ( (2 * shiftY) - 1 ) * self.scale,
                              ( (2 * shiftY) + 1 ) * self.scale
                            ]
+        
+        self.addToOutput( '\tscene.camera.screenwindow = %f %f %f %f' % (screenwindow[0], screenwindow[1], screenwindow[2], screenwindow[3]) )
+        #self.addToOutput( '\t"float frameaspectratio" [%f]' % ratio )
+        
+        #self.addToOutput( '\t"float hither" [%f]' % (self.camera.nearClippingPlane()*self.sceneScale) )
+        #self.addToOutput( '\t"float yon" [%f]' % (self.camera.farClippingPlane()*self.sceneScale) )
+        self.addToOutput( '\tscene.camera.shutteropen = %f' % 0.0 )
+        
+        exposure_time = cmds.getAttr( 'lux_settings.camera_exposuretime' )
+        self.addToOutput( '\tscene.camera.shutterclose = %f' % exposure_time )
+    
+    #end def InsertCommon
