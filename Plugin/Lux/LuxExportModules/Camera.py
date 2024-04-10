@@ -191,3 +191,8 @@ class Camera(ExportModule):
         TODO: Complete this. Realistic doesn't work so I don't know if this is correct.
         TODO: include self.sceneScale where necessary
         """
+        
+        if self.outHeight < self.outWidth:
+             cFOV = math.degrees( self.camera.horizontalFieldOfView() )
+        else:
+            cFOV = math.degrees( self.camera.verticalFieldOfView() ) 
