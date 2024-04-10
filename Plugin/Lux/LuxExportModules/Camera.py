@@ -75,3 +75,23 @@ class Camera(ExportModule):
         self.InsertLookat()
     
     #end def getOutput
+    
+    def InsertCommon(self):
+        """
+        Insert parameters common to all camera types into the lux scene file.
+        """
+        
+        # should really use focusDistance but that's not auto set to the camera's aim point ??!
+        #self.addToOutput ( '\t"float focaldistance" [%f]' % (self.camera.centerOfInterest()*self.sceneScale) )
+        
+        
+        if cmds.getAttr( 'lux_settings.camera_infinite_focus' ) == 0:
+            focal_length = self.camera.focalLength() / self.DOF_CONST
+            lens_radius = focal_length / ( 2 * self.camera.fStop() )
+        else:
+            lens_radius = 0.0 
+        
+        #self.addToOutput ( '\t"float lensradius" [%f]' % lens_radius )
+    
+        shiftX = self.camera.filmTranslateH() # these are a fraction of the image height/width
+        shiftY = self.camera.filmTranslateV()
