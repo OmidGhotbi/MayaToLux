@@ -160,3 +160,16 @@ class Camera(ExportModule):
         self.addToOutput ( '' )
         
     #end def InsertLookat
+    
+    def pointCheckUpAxis(self, point):
+        """
+        Check if the given point needs to be converted to Z-Up from Y-Up and 
+        convert if necessary. 
+        """
+        
+        pointTM = OpenMaya.MTransformationMatrix()
+        pointTM.setTranslation(OpenMaya.MVector(point.x, point.y, point.z), OpenMaya.MSpace.kWorld)
+        pointM = pointTM.asMatrix()
+        pointM = self.checkUpAxis(pointM)
+        pointTM = OpenMaya.MTransformationMatrix(pointM)
+        return pointTM.getTranslation(OpenMaya.MSpace.kWorld)
