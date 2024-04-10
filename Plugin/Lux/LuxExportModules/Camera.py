@@ -124,3 +124,15 @@ class Camera(ExportModule):
         self.addToOutput( '\tscene.camera.shutterclose = %f' % exposure_time )
     
     #end def InsertCommon
+    
+    def InsertLookat(self):
+        """
+        Here we grab the camera's position, point and up vectors and output them
+        as a lux LookAt.
+        """
+        
+        try:
+            eye = self.camera.eyePoint(OpenMaya.MSpace.kWorld)
+        except:
+            OpenMaya.MGlobal.displayError( "Failed to get camera.eyePoint\n" )
+            raise
