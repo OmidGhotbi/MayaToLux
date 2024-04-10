@@ -203,3 +203,9 @@ class Camera(ExportModule):
         focal = self.camera.focalLength() / self.DOF_CONST
         aperture_diameter = focal / fstop
         filmdistance = dofdist * focal / (dofdist - focal)
+        
+        self.addToOutput( '\tscene.camera.type = realistic' )
+        self.addToOutput( '\t"string specfile" ["%s"]' % 'E:/dev/luxrender/lux/cameras/realistic/wide.22mm.dat' )
+        self.addToOutput( '\t"float filmdistance" [%f]' % filmdistance )
+        self.addToOutput( '\t"float aperture_diameter" [%f]' % aperture_diameter )
+        self.addToOutput( '\t"float filmdiag" [%f]' % filmdiag ) 
