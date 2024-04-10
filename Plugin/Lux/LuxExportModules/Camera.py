@@ -212,3 +212,16 @@ class Camera(ExportModule):
         
         self.InsertCommon()
         #self.addToOutput( '' )
+        
+    def InsertPerspective(self):
+        """
+        Insert parameters specific to the lux "perspective" camera type into the
+        scene file.
+        """
+        
+        self.addToOutput ( '\tscene.camera.type = perspective' )
+        
+        if self.outHeight < self.outWidth:
+             cFOV = math.degrees( self.camera.horizontalFieldOfView() )
+        else:
+            cFOV = math.degrees( self.camera.verticalFieldOfView() )
