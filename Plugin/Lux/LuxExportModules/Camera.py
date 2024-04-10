@@ -73,3 +73,5 @@ class Camera(ExportModule):
                 self.InsertRealistic()
                 
         self.InsertLookat()
+    
+    #end def getOutput
