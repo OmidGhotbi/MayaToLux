@@ -142,3 +142,9 @@ class Camera(ExportModule):
         except:
             OpenMaya.MGlobal.displayError( "Failed to get camera.upDirection\n" )
             raise
+        
+        try:
+            at = self.camera.centerOfInterestPoint(OpenMaya.MSpace.kWorld)
+        except:
+            OpenMaya.MGlobal.displayError( "Failed to get camera.centerOfInterestPoint\n" )
+            raise
