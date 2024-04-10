@@ -148,3 +148,13 @@ class Camera(ExportModule):
         except:
             OpenMaya.MGlobal.displayError( "Failed to get camera.centerOfInterestPoint\n" )
             raise
+        
+        # Convert to Z-Up if necessary
+        eye = self.pointCheckUpAxis(eye)
+        at  = self.pointCheckUpAxis(at)
+        up  = self.pointCheckUpAxis(up)
+         
+        self.addToOutput ( '\tscene.camera.lookat.orig = %f %f %f' % (eye.x, eye.y, eye.z) )
+        self.addToOutput ( '\tscene.camera.lookat.target = %f %f %f' % (at.x, at.y, at.z) )
+        self.addToOutput ( '\tscene.camera.up = %f %f %f' % (up.x, up.y, up.z) )
+        self.addToOutput ( '' )
