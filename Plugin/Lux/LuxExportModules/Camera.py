@@ -231,3 +231,14 @@ class Camera(ExportModule):
         self.addToOutput ( '\tscene.camera.fieldofview = %f' % cFOV )
         self.InsertCommon( )
         #self.addToOutput ( '' )
+    
+    def InsertOrtho(self):
+        """
+        Insert parameters specific to the lux "orthographic" camera type into the
+        scene file.
+        """
+        self.scale = self.camera.orthoWidth() / 2
+        self.addToOutput ( '\tscene.camera.type = orthographic' )
+        self.InsertCommon( )
+        #self.addToOutput ( '' )
+    #end def InsertOrtho
