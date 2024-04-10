@@ -158,3 +158,5 @@ class Camera(ExportModule):
         self.addToOutput ( '\tscene.camera.lookat.target = %f %f %f' % (at.x, at.y, at.z) )
         self.addToOutput ( '\tscene.camera.up = %f %f %f' % (up.x, up.y, up.z) )
         self.addToOutput ( '' )
+        
+    #end def InsertLookat
