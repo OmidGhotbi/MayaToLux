@@ -225,3 +225,9 @@ class Camera(ExportModule):
              cFOV = math.degrees( self.camera.horizontalFieldOfView() )
         else:
             cFOV = math.degrees( self.camera.verticalFieldOfView() )
+        
+        auto_focus = self.intToBoolString( cmds.getAttr( 'lux_settings.camera_autofocus' ) )
+        self.addToOutput ( '\tscene.camera.autofocus.enable = %s' % auto_focus )
+        self.addToOutput ( '\tscene.camera.fieldofview = %f' % cFOV )
+        self.InsertCommon( )
+        #self.addToOutput ( '' )
