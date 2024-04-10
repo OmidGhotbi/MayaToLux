@@ -107,3 +107,8 @@ class Camera(ExportModule):
                              ( (2 * shiftY) + invRatio ) * self.scale
                            ]
         else:
+            screenwindow = [ ( (2 * shiftX) - ratio ) * self.scale,
+                             ( (2 * shiftX) + ratio ) * self.scale,
+                             ( (2 * shiftY) - 1 ) * self.scale,
+                             ( (2 * shiftY) + 1 ) * self.scale
+                           ]
