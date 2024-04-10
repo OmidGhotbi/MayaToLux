@@ -35,3 +35,21 @@ class Camera(ExportModule):
     """
     
     DOF_CONST = 0 # this should be (1000 * (scene scale factor)), I think. :S
+    
+        def __init__(self, dagPath, width, height):
+        """
+        Constructor. Initialises local dagPath, camera function set and some
+        vars needed for camera parameter calculation.
+        """
+        
+        self.dagPath = dagPath
+        self.camera = OpenMaya.MFnCamera(self.dagPath)
+        
+        self.outWidth  = width
+        self.outHeight = height
+        
+        self.scale = 1.0
+        
+        self.sceneScale = self.getSceneScaleFactor()
+        self.DOF_CONST = 1000 # * self.sceneScale
+    #end def __init__
