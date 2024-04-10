@@ -53,3 +53,21 @@ class Camera(ExportModule):
         self.sceneScale = self.getSceneScaleFactor()
         self.DOF_CONST = 1000 # * self.sceneScale
     #end def __init__
+    
+    def getOutput(self):
+        """
+        The actual camera export process starts here. First we insert the lux
+        LookAt and then the appropriate camera.
+        """
+
+        if self.camera.isOrtho():
+            self.InsertOrtho()
+        else:
+            ptype = cmds.getAttr( 'lux_settings.camera_persptype', asString = True )
+            self.addToOutput ( '#Camera' )
+            if ptype == 'Perspective':
+                self.InsertPerspective()
+            elif ptype == 'Environment':
+                self.InsertEnvironment()
+            else:
+                self.InsertRealistic()
