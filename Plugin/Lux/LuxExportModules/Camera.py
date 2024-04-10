@@ -136,3 +136,9 @@ class Camera(ExportModule):
         except:
             OpenMaya.MGlobal.displayError( "Failed to get camera.eyePoint\n" )
             raise
+        
+        try:
+            up = self.camera.upDirection(OpenMaya.MSpace.kWorld)
+        except:
+            OpenMaya.MGlobal.displayError( "Failed to get camera.upDirection\n" )
+            raise
