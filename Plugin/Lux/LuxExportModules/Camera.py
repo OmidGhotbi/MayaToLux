@@ -209,3 +209,6 @@ class Camera(ExportModule):
         self.addToOutput( '\t"float filmdistance" [%f]' % filmdistance )
         self.addToOutput( '\t"float aperture_diameter" [%f]' % aperture_diameter )
         self.addToOutput( '\t"float filmdiag" [%f]' % filmdiag ) 
+        
+        self.InsertCommon()
+        #self.addToOutput( '' )
