@@ -27,3 +27,11 @@ from maya import OpenMaya
 from maya import cmds
 
 from ExportModule import ExportModule
+
+class Camera(ExportModule):
+    """
+    Camera ExportModule. Responsible for detecting the type of the given
+    camera and exporting a suitable lux camera with appropriate parameters.
+    """
+    
+    DOF_CONST = 0 # this should be (1000 * (scene scale factor)), I think. :S
